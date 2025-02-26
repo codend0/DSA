@@ -1,0 +1,7 @@
+so the approach for brute better is that 
+BRUTE
+you itterate from 0 to n and multiply that number with itself and check whether the 
+number is equal to or less than and store it where we get greater than or equal we break out
+
+BETTER
+using sqrt by default function in math library
