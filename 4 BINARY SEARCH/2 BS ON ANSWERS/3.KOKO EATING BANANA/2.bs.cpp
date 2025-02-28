@@ -46,3 +46,4 @@ int main()
     cout << "Koko should eat atleast " << ans << " bananas/hr.\n";
     return 0;
 }
+//TC is n*log(max v[])
