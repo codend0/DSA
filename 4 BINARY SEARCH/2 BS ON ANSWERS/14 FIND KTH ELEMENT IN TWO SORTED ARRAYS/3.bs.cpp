@@ -1,13 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
-double median(vector<int> a, vector<int> b)
+int kthElement(vector<int> &a, vector<int> &b, int n1, int n2, int k)
 {
-    int n1 = a.size();
-    int n2 = b.size();
-    int n = n1 + n2;
-    int low = 0, high = n1;
-    // left half size
-    int left = (n1 + n2 + 1) / 2;
+    if (n1 > n2) return kthElement(b, a, n2, n1, k);
+    int low = max(0, k - n2); // agar k bada hai than b so we have to min take k-n2
+    int high = min(k, n1);    // kitni bar bs apply ho skata hai
+    int left = k;
     while (low <= high)
     {
         int mid1 = (low + high) / 2;
@@ -23,14 +21,7 @@ double median(vector<int> a, vector<int> b)
             l2 = b[mid2 - 1];
         if (l1 <= r2 && l2 <= r1)
         {
-            if (n % 2 == 1)
-            {
-                return max(l1, l2);
-            }
-            else
-            {
-                return (double)(max(l1, l2) + min(r1, r2)) / 2.0;
-            }
+            return max(l1,l2);
         }
         if (l1 > r2)
         {
@@ -43,15 +34,11 @@ double median(vector<int> a, vector<int> b)
             low = mid1 + 1;
         }
     }
-    return 0;
 }
 int main()
 {
-    vector<int> a = {1, 4, 7, 10, 12};
-    vector<int> b = {2, 3, 6, 15};
-    cout << "The median of two sorted array is " << fixed << setprecision(1)
-         << median(a, b) << '\n';
+    vector<int> a = {2, 3, 6, 7, 9};
+    vector<int> b = {1, 4, 8, 10};
+    cout << "The k-ht element of two sorted array is: " << kthElement(a, b, a.size(), b.size(), 5) << '\n';
     return 0;
 }
-// TC O(log(min(n1,n2))),SC O(1)
-#pragma GCC optimize("03,unroll-loops")

@@ -21,3 +21,4 @@ int main(){
     cout << "The k-ht element of two sorted array is: " <<kthElement(a, b, a.size(), b.size(), 5) << '\n';
     return 0;
 }
+//TC O(n1+n2) SC O(n1+n2)
